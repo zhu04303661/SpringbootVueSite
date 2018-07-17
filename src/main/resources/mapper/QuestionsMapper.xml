@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.site.dao.QuestionsDao" >
+    <sql id="BASE_TABLE">
+        t_users
+    </sql>
+
+    <sql id="BASE_COLUMN">
+        id,question,options
+    </sql>
+
+
+    <!-- 删除网站配置 -->
+    <delete id="deleteQuestions">
+        DELETE FROM
+        <include refid="BASE_TABLE"/>
+        WHERE name = #{id, jdbcType=INTEGER},
+    </delete>
+
+    <!-- 更新网站配置 -->
+    <update id="updateQuestions">
+        UPDATE
+        <include refid="BASE_TABLE"/>
+        <set>
+            <if test="question != null">
+                value = #{question, jdbcType=VARCHAR},
+            </if>
+            <if test="options != null">
+                description = #{options, jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE name = #{id, jdbcType=INTEGER}
+    </update>
+
+    <!-- 根据配置名查找配置信息 -->
+    <select id="getQuestionsById" resultType="cn.site.model.QuestionsDomain">
+        SELECT
+        <include refid="BASE_COLUMN"/>
+        FROM <include refid="BASE_TABLE"/> AS o
+        WHERE name = #{id, jdbcType=INTEGER}
+    </select>
+
+    <!-- 查找全部配置信息 -->
+    <select id="getQuestions" resultType="cn.site.model.QuestionsDomain">
+        SELECT
+        <include refid="BASE_COLUMN"/>
+        FROM <include refid="BASE_TABLE"/> AS o
+    </select>
+
+
+</mapper>
