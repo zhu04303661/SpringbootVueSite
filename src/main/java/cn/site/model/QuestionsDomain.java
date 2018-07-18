@@ -25,6 +25,13 @@ public class QuestionsDomain {
         this.options = options;
     }
 
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
     /** id */
     private Integer id;
 
@@ -32,5 +39,8 @@ public class QuestionsDomain {
     private String question;
     /** 答案 */
     private String options;
+
+
+    private int groupId;
 
 }

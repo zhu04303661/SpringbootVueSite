@@ -1,11 +1,13 @@
 package cn.site.dao;
 
 import cn.site.model.QuestionsDomain;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public class QuestionsDao {
+@Mapper
+public interface QuestionsDao {
     /**
      * 删除配置
      * @param id
@@ -15,14 +17,14 @@ public class QuestionsDao {
 
     /**
      * 更新配置
-     * @param options
+     * @param questions
      * @return
      */
     int updateQuestions(QuestionsDomain questions);
 
     /***
      * 根据名称获取配置
-     * @param name
+     * @param id
      * @return
      */
     QuestionsDomain getQuestionsById(@Param("id") Integer id);

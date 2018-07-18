@@ -1,6 +1,6 @@
 package cn.site.service.questions;
 
-import cn.site.model.OptionsDomain;
+import cn.site.model.QuestionsDomain;
 
 import java.util.List;
 import java.util.Map;
@@ -11,35 +11,32 @@ import java.util.Map;
 public interface QuestionService {
 
     /**
-     * 删除网站配置
-     * @param name
+     * 删除配置
+     * @param id
      * @return
      */
-    void deleteOptionByName(String name);
+    void deleteQuestions(int id);
 
     /**
-     * 更新网站配置
-     * @param name
-     * @param value
      * @return
      */
-    void updateOptionByName(String name, String value);
+    void updateQuestionsById(int id, String qustion, String options);
 
     /**
      * 保存网站配置
      * @param options
      */
-    void saveOptions(Map<String, String> options);
+    void saveQuestions(Map<String, String> options);
     /***
      * 根据名称获取网站配置
-     * @param name
+     * @param id
      * @return
      */
-    OptionsDomain getOptionByName(String name);
+    QuestionsDomain getQuestionsById(Integer id);
 
     /**
      * 获取全部网站配置
      * @return
      */
-    List<OptionsDomain> getOptions();
+    List<QuestionsDomain> getQuestions();
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.site.dao.QuestionsDao" >
     <sql id="BASE_TABLE">
-        t_users
+        questions
     </sql>
 
     <sql id="BASE_COLUMN">
-        id,question,options
+        id,question,options,groupId
     </sql>
 
 
@@ -44,7 +44,8 @@
     <select id="getQuestions" resultType="cn.site.model.QuestionsDomain">
         SELECT
         <include refid="BASE_COLUMN"/>
-        FROM <include refid="BASE_TABLE"/> AS o
+        FROM <include refid="BASE_TABLE"/> AS l
+        ORDER BY l.id DESC
     </select>
 
 

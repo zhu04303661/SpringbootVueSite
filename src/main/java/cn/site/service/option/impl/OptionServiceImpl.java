@@ -61,8 +61,9 @@ public class OptionServiceImpl implements OptionService {
     }
 
     @Override
-    @Cacheable(value = "optionsCache", key = "'options_'")
+//    @Cacheable(value = "optionsCache", key = "'options_'")
     public List<OptionsDomain> getOptions() {
-        return optionDao.getOptions();
+        List<OptionsDomain> re= optionDao.getOptions();
+        return  re;
     }
 }
