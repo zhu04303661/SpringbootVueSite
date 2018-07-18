@@ -1,0 +1,107 @@
+<view class="index">
+  <view class="index-hd">
+    <image class="index-logo" src="../../common/resources/kindComp/logo.png"></image>
+    <view class="index-desc">领未是一家致力于使用科技的力量让移民更容易，让每个人都有机会享受世界优质资源。 ----领未与您一起引领未来</view>
+  </view>
+
+  <view class="flex-wrap header">
+  <input
+    placeholder="添加一个任务" 
+    bindinput="updateDraft" 
+    value="{{draft}}" 
+    class="new-todo"/>
+  <text style="display: {{draft ? 'inline': 'none'}}" class="add tappable" ontap="addTodo">添加</text>
+</view>
+<view class="todo-list">
+<block wx:for="{{todos}}" wx:for-item="todo" wx:key="objectId">
+  <view class="flex-wrap todo">
+    <icon
+      type="{{todo.done ? 'success_circle' : 'circle'}}" 
+      data-id="{{todo.objectId}}" 
+      ontap="toggleDone"
+      class="todo-icon tappable" 
+      size="24"/>
+    <text
+      wx:if="{{todo.objectId != editedTodo.objectId}}"
+      data-id="{{todo.objectId}}" 
+      class="todo-text tappable {{todo.done ? 'done': ''}}"
+      ontap="editTodo">
+      {{todo.content}}
+    </text>
+    <input 
+      wx:if="{{todo.objectId == editedTodo.objectId}}" 
+      data-id="{{todo.objectId}}" 
+      value="{{todo.content}}" 
+      auto-focus 
+      bindinput="updateEditedContent" 
+      bindblur="doneEdit" 
+      class="todo-input"/>
+  </view>
+</block>
+</view>
+
+
+  <view class="index-bd">
+    <view class="kind-list">
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <!-- <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle"> -->
+          <view id="{{item.id}}" class="kind-list-item-hd" bindtap="kindToggle">
+ 
+           <view class="kind-list-text">{{item.name}}</view>
+            <!-- <image class="kind-list-img" src="../../common/resources/kindComp/{{item.id}}.png"></image> -->
+          </view>
+
+            <!-- <view class="weui-flex">
+                <button class="mini-btn" type="default" size="mini">{{option}}</button>
+
+                <view class="weui-flex__item"><view class="placeholder">{{item.options[0]}}</view></view>
+                <view class="weui-flex__item"><view class="placeholder">{{item.options[1]}}</view></view>
+                <view class="weui-flex__item"><view class="placeholder">{{item.options[2]}}</view></view>
+            </view>
+           -->
+           <checkbox-group name="checkbox">
+              <label wx:for-items="{{item.options}}" wx:for-item="option" wx:key="*item" >
+                <view class="item2">
+                  <checkbox class="weui-flex__item item3" value="checkbox1"/>{{option}} 
+                </view>
+                
+              </label>
+            </checkbox-group>
+
+         <!-- <view class="weui-grids">
+            <block class="allitems" wx:for="{{item.options}}" wx:for-item="option"  wx:key="id">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+                    <view class="weui-grid__label" style="font-size: 12px;">{{option}} </view>
+                </navigator> 
+            </block>
+        </view> -->
+
+          <!-- <view wx:for-items="{{item.options}}" wx:for-item="option" wx:key="*item">
+ 
+            <checkbox-group name="checkbox">
+              <label wx:for-items="{{item.options}}" wx:for-item="option" wx:key="*item" >
+                <checkbox value="checkbox1"/>{{option}} 
+              
+              </label>
+            </checkbox-group>
+
+        <button class="mini-btn" type="default" size="mini">{{option}}</button>
+
+          </view> -->
+          <!--<view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+             <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+                <navigator url="../../component/pages/{{page}}/{{page}}" class="navigator">
+                  <view class="navigator-text">{{page}}</view>
+                  <view class="navigator-arrow"></view>
+                </navigator>
+              </block>
+            </view>
+          </view> -->
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
