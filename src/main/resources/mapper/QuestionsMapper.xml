@@ -6,7 +6,7 @@
     </sql>
 
     <sql id="BASE_COLUMN">
-        id,question,options,groupId
+        id,question,options,groupId,type
     </sql>
 
 

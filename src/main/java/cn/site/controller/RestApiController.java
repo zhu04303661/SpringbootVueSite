@@ -25,6 +25,7 @@ public class RestApiController {
     @RequestMapping(path = "/getQuestions", produces = MediaType.APPLICATION_JSON_VALUE, method = {RequestMethod.GET, RequestMethod.POST})
     private List<QuestionsDomain> getQuestions(@RequestBody String body) {
         List<OptionsDomain> tmp = optionService.getOptions();
+
         return questionService.getQuestions();
 //        return webService.removeproducttemplate(body);
     }

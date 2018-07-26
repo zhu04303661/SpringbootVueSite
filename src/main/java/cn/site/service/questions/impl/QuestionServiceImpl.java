@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 @Service
@@ -70,6 +71,17 @@ public class QuestionServiceImpl implements QuestionService {
 //    @Cacheable(value = "questionsCache", key = "'questions_'")
     public List<QuestionsDomain> getQuestions() {
         List<QuestionsDomain> re = questionsDao.getQuestions();
+        for(QuestionsDomain questionsDomain: re){
+            String content = questionsDomain.getOptions();
+            if(content.indexOf(",") > -1){
+                String[] qlist = content.split(",");
+                List<String> optionList =  new ArrayList<>();
+                for(int i=0; i<qlist.length; i++){
+                    optionList.add(qlist[i]);
+                }
+                questionsDomain.setOptionList(optionList);
+            }
+        }
         return re;
     }
 }

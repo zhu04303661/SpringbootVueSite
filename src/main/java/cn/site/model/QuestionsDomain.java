@@ -1,5 +1,7 @@
 package cn.site.model;
 
+import java.util.List;
+
 public class QuestionsDomain {
     public Integer getId() {
         return id;
@@ -17,13 +19,7 @@ public class QuestionsDomain {
         this.question = question;
     }
 
-    public String getOptions() {
-        return options;
-    }
 
-    public void setOptions(String options) {
-        this.options = options;
-    }
 
     public int getGroupId() {
         return groupId;
@@ -32,6 +28,31 @@ public class QuestionsDomain {
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
+
+    public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
+    }
+
+    public List<String> getOptionList() {
+        return optionList;
+    }
+
+    public void setOptionList(List<String> optionList) {
+        this.optionList = optionList;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     /** id */
     private Integer id;
 
@@ -40,6 +61,11 @@ public class QuestionsDomain {
     /** 答案 */
     private String options;
 
+
+
+    private List<String> optionList;
+
+    private String type;
 
     private int groupId;
 
